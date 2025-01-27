@@ -7,11 +7,11 @@ import styles from './App.module.css';
 const App = () => {
    const [images, setImages] = useState([]);
 
-   const createImages = (urls) =>
+   const createImage = (urls) =>
       urls.map((u) => {
          return {
             data: u,
-            id: u.length,
+            id: Math.round(u.length * Math.random()),
          };
       });
 
@@ -19,11 +19,13 @@ const App = () => {
       const files = [...e.target.files];
       const urls = await Promise.all(files.map((f) => fileToDataUrl(f)));
 
-      const images = createImages(urls);
-      setImages(images);
+      const images = createImage(urls);
+      setImages((prev) => [...prev, ...images]);
    };
 
-   const handlerDelete = (id) => setImages(images.filter((i) => i.id !== id));
+   const handleDelete = (id) => setImages(images.filter((i) => i.id !== id));
+
+   console.log(images);
 
    return (
       <>
@@ -32,7 +34,7 @@ const App = () => {
          </div>
          <div className={styles['preview-container']}>
             {images.map((i) => (
-               <Preview key={i.id} url={i.data} onDelete={() => handlerDelete(i.id)} />
+               <Preview key={i.id} url={i.data} onDelete={() => handleDelete(i.id)} />
             ))}
          </div>
       </>
