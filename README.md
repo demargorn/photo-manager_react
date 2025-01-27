@@ -1,0 +1,2 @@
+# Photo Manager React Vite
+
