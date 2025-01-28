@@ -6,13 +6,6 @@
    padding: 0;
 }
 
-.input-container {
-   position: relative;
-   width: 400px;
-   height: 60px;
-   margin: 20px;
-}
-
 .preview-container {
    display: flex;
    justify-content: space-around;

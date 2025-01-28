@@ -25,19 +25,15 @@ const App = () => {
 
    const handleDelete = (id) => setImages(images.filter((i) => i.id !== id));
 
-   console.log(images);
-
    return (
-      <>
-         <div className={styles['input-container']}>
-            <Input onSelect={handleSelect} />
-         </div>
+      <section>
+         <Input onSelect={handleSelect} />
          <div className={styles['preview-container']}>
             {images.map((i) => (
                <Preview key={i.id} url={i.data} onDelete={() => handleDelete(i.id)} />
             ))}
          </div>
-      </>
+      </section>
    );
 };
 
